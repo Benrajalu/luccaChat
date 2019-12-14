@@ -18,6 +18,12 @@
 
       <main class="wrapper">
         <div class="chatbox">
+          <aside class="chatbox-header">
+            <p class="name">Tomothy Webb</p>
+            <p class="context">
+              Hey! I'm here to help with your urgent questions.
+            </p>
+          </aside>
           <ul class="messages-wrapper">
             <li
               ng-repeat="message in messages"
@@ -40,25 +46,20 @@
               </article>
             </li>
           </ul>
-          <div class="status" ng-if="messageInput">
-            <div ng-class="{show:messageInput}">
-              <img
-                ng-src="{{ messageInput.img }}"
-                height="50px"
-                style="float:left;"
-              />
-              <p style="background:white; width:400px">
-                {{ messageInput.author }} écrit ...
-              </p>
-            </div>
+          <div class="status">
+            <p ng-if="messageInput" style="background:white; width:400px">
+              {{ messageInput.author }} écrit ...
+            </p>
           </div>
-          <form class="composeBox" ng-submit="sendMessage()">
-            <input
-              placeholder="Envoyer un message"
-              ng-model="currentMessage"
-              ng-change="updateInput()"
-            /><button>send</button>
-          </form>
+          <div class="composition-zone">
+            <form class="composeBox" ng-submit="sendMessage()">
+              <input
+                placeholder="Envoyer un message"
+                ng-model="currentMessage"
+                ng-change="updateInput()"
+              /><button>send</button>
+            </form>
+          </div>
         </div>
       </main>
     </div>

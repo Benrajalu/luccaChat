@@ -1,0 +1,6 @@
+@mixin box {
+  background: $white;
+  box-shadow: 0px 1px 2px rgba(136, 160, 195, 0.5),
+    0px 4px 4px rgba(136, 160, 195, 0.25);
+  border-radius: 3px;
+}

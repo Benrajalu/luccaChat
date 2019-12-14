@@ -1,0 +1,30 @@
+.chatbox {
+  @include box;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  max-width: 85rem;
+  max-height: 70rem;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: stretch;
+  align-items: stretch;
+
+  .messages-wrapper {
+    flex-grow: 2;
+    overflow: auto;
+  }
+
+  .status {
+    display: flex;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .status,
+  .composition-zone {
+    padding: 0 $desktopPaddingBase;
+  }
+}

@@ -2,51 +2,28 @@
 <html lang="en" ng-app="chatApp">
   <head>
     <meta charset="UTF-8" />
-    <title>Document</title>
+    <title>Lucca Chat</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
     <script src="./app.js"></script>
-    <style>
-      body > div.mainBody {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      body > div > div > div > div img.img-chat {
-        float: left;
-      }
-
-      body > div > div > img {
-        padding: 50px;
-        border-radius: 150px;
-      }
-
-      div.container-temp {
-        width: 500px;
-        margin: auto;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="chat.css" />
   </head>
   <body>
     <div class="mainBody" ng-controller="ChatController">
-      <div
-        style="height:80px; background-color:#909090; position:absolute; top:0; left:0; width:100%;"
-      >
-        <img
-          src="./assets/Jumping CC.svg"
-          width="100px"
-          style="background:#909090; left:100px; position: absolute; top:0;"
-        />
-      </div>
-      <div
-        style="position:absolute; top:80px; left:0; width:100%; height: 100%; overflow:auto;"
-      >
-        <div style="width:500px; margin:auto;">
-          <ul ng-repeat="message in messages" style="height:200px">
-            <li class="message" ng-class="{ownMessage:message.me}">
+      <header class="header">
+        <figure class="logo">
+          <img src="./assets/logo.svg" />
+        </figure>
+      </header>
+
+      <main class="wrapper">
+        <div class="chatbox">
+          <ul class="messages-wrapper">
+            <li
+              ng-repeat="message in messages"
+              class="message"
+              ng-class="{ownMessage:message.me}"
+            >
               <img
                 ng-src="{{ message.img }}"
                 height="100px"
@@ -63,21 +40,19 @@
               </article>
             </li>
           </ul>
-        </div>
-        <div class="container-temp" ng-if="messageInput">
-          <div ng-class="{show:messageInput}">
-            <img
-              ng-src="{{ messageInput.img }}"
-              height="50px"
-              style="float:left;"
-            />
-            <p style="background:white; width:400px">
-              {{ messageInput.author }} écrit ...
-            </p>
+          <div class="status" ng-if="messageInput">
+            <div ng-class="{show:messageInput}">
+              <img
+                ng-src="{{ messageInput.img }}"
+                height="50px"
+                style="float:left;"
+              />
+              <p style="background:white; width:400px">
+                {{ messageInput.author }} écrit ...
+              </p>
+            </div>
           </div>
-        </div>
-        <div>
-          <form style="width:200px; margin:auto;" ng-submit="sendMessage()">
+          <form class="composeBox" ng-submit="sendMessage()">
             <input
               placeholder="Envoyer un message"
               ng-model="currentMessage"
@@ -85,7 +60,7 @@
             /><button>send</button>
           </form>
         </div>
-      </div>
+      </main>
     </div>
   </body>
 </html>

@@ -25,6 +25,7 @@
             </p>
           </aside>
           <ul class="messages-wrapper">
+            <li ng-show="emptyArray">Time to start a conversation!</li>
             <li
               ng-repeat="message in messages"
               class="message"

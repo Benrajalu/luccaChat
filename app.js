@@ -8,14 +8,14 @@ chatApp.controller('ChatController', [
   function($scope, $http, $timeout) {
     // Déclaration des 2 users
     var USER = {
-      imgLong: './assets/_MG_9359.jpg',
-      img: '9359.jpg',
+      imgLong: './assets/_MG_9428.png',
+      img: '9428.png',
       name: 'Jane Doe'
     };
 
     var OPERATOR = {
-      imgLong: './assets/_MG_9428.jpg',
-      img: '9428.jpg',
+      imgLong: './assets/_MG_9359.png',
+      img: '9359.png',
       name: 'Tomothy Webb'
     };
 
@@ -27,6 +27,8 @@ chatApp.controller('ChatController', [
     $scope.messageInput = null;
     // Le contenu de l'input
     $scope.currentMessage = '';
+    // Disable l'input principal si vide
+    $scope.isInputDisabled = $scope.currentMessage.length === 0;
 
     /**
      * Ajout d'un nouveau message

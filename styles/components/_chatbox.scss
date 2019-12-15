@@ -5,7 +5,7 @@
   position: relative;
   max-width: 85rem;
   max-height: 70rem;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem; // Vertical margin to artifically recenter the chatbox, balancing with the logo
   display: flex;
   flex-flow: column;
   justify-content: stretch;
@@ -14,6 +14,7 @@
   .messages-wrapper {
     flex-grow: 2;
     overflow: auto;
+    padding: $desktopPaddingBase ($desktopPaddingBase * 2);
   }
 
   .status {
@@ -21,10 +22,6 @@
     height: 4rem;
     display: flex;
     align-items: center;
-  }
-
-  .status,
-  .composition-zone {
     padding: 0 $desktopPaddingBase;
   }
 }

@@ -6,6 +6,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
     <script src="./app.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" type="text/css" href="chat.css" />
   </head>
   <body>
@@ -19,11 +23,22 @@
       <main class="wrapper">
         <div class="chatbox">
           <aside class="chatbox-header">
-            <p class="name">Tomothy Webb</p>
-            <p class="context">
-              Hey! I'm here to help with your urgent questions.
-            </p>
+            <figure class="operator">
+              <img
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                class="avatar small"
+                alt="Avatar de Thomoty"
+                style="background-image: url('./assets/_MG_9359.png')"
+              />
+            </figure>
+            <div class="content">
+              <p class="name">Tomothy Webb</p>
+              <p class="context">
+                Hey! I'm here to help with your urgent questions.
+              </p>
+            </div>
           </aside>
+
           <ul class="messages-wrapper">
             <li ng-show="emptyArray">Time to start a conversation!</li>
             <li
@@ -32,10 +47,10 @@
               ng-class="{ownMessage:message.me}"
             >
               <img
-                ng-src="{{ message.img }}"
-                height="100px"
-                class="img-chat"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                class="avatar"
                 alt="Avatar de {{ message.author }}"
+                style="background-image: url('{{ message.img }}')"
               />
               <article>
                 <p style="background:white; width:400px">
@@ -47,20 +62,27 @@
               </article>
             </li>
           </ul>
+
           <div class="status">
             <p ng-if="messageInput" style="background:white; width:400px">
               {{ messageInput.author }} écrit ...
             </p>
           </div>
-          <div class="composition-zone">
-            <form class="composeBox" ng-submit="sendMessage()">
-              <input
-                placeholder="Envoyer un message"
-                ng-model="currentMessage"
-                ng-change="updateInput()"
-              /><button>send</button>
-            </form>
-          </div>
+
+          <form name="composeBox" class="composeBox" ng-submit="sendMessage()">
+            <label for="message" class="sr-only">Entrez votre message</label>
+            <input
+              placeholder="Envoyer un message"
+              ng-model="currentMessage"
+              ng-change="updateInput()"
+              class="input"
+              id="message"
+              required
+            />
+            <button class="submit" ng-disabled="composeBox.$invalid">
+              send
+            </button>
+          </form>
         </div>
       </main>
     </div>

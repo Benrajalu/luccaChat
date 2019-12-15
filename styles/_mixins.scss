@@ -4,3 +4,10 @@
     0px 4px 4px rgba(136, 160, 195, 0.25);
   border-radius: 3px;
 }
+
+@mixin source($size, $weight, $color) {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}

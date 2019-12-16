@@ -1,0 +1,79 @@
+.composeBox {
+  padding: 1rem $desktopPaddingBase $desktopPaddingBase;
+  position: relative;
+
+  .composeBox-input {
+    display: block;
+    width: 100%;
+    height: 6rem;
+    line-height: 6rem;
+    background: $background;
+    border: 0.1rem solid $dividers;
+    border-radius: 0.6rem;
+    padding: 0 $desktopPaddingBase;
+    @include source(1.5rem, 400, $copy);
+    transition: border 100ms ease-in;
+
+    &::placeholder {
+      color: $placeholder;
+    }
+
+    &:focus {
+      outline: 0;
+      border-color: $secondary;
+    }
+  }
+
+  .composeBox-button {
+    right: $desktopPaddingBase * 2;
+    top: 50%;
+    width: 4rem;
+    height: 4rem;
+    background: $primary;
+    border: 0.1rem solid $primary;
+    border-radius: 100%;
+    transform: translateY(-2.5rem);
+    position: absolute;
+    box-shadow: 0 0 0 0.2rem rgba($secondary, 0);
+    cursor: pointer;
+    padding: 0;
+    transition: box-shadow 100ms ease-in, background 100ms ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > svg {
+      display: block;
+      margin: 0;
+      width: 2rem;
+      height: 2rem;
+      fill: $white;
+      position: relative;
+      left: -0.1rem; // Center correction for balance
+      transition: fill 100ms ease-in;
+    }
+
+    &:hover:not(:disabled) {
+      background: $white;
+
+      > svg {
+        fill: $primary;
+      }
+    }
+
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba($secondary, 1);
+      background: $white;
+
+      > svg {
+        fill: $primary;
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+}

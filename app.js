@@ -1,89 +1,109 @@
-var chatApp = angular.module('chatApp', ['ngSanitize']);
+var chatApp = angular.module('chatApp', ['ngSanitize', 'angularMoment']);
 
 // Define the `ChatController` controller on the `phonecatApp` module
-chatApp.controller('ChatController', 
-    ['$scope', '$http', '$timeout', 
-    function($scope, $http, $timeout) {
+chatApp.controller('ChatController', [
+  '$scope',
+  '$http',
+  '$timeout',
+  function($scope, $http, $timeout) {
+    // Déclaration des 2 users
+    var USER = {
+      imgLong: './assets/_MG_9428.png',
+      img: '9428.png',
+      name: 'Jane Doe'
+    };
 
-      // Déclaration des 2 users
-      var USER = {
-        imgLong : './assets/_MG_9359.jpg',
-        img : '9359.jpg',
-        name : 'Utilisateur (moi)'
-      };
+    var OPERATOR = {
+      imgLong: './assets/_MG_9359.png',
+      img: '9359.png',
+      name: 'Tomothy Webb'
+    };
 
-      var OPERATOR = {
-        imgLong : './assets/_MG_9428.jpg',
-        img : '9428.jpg',
-        name : 'Opératrice'
-      }
+    // La liste des messages
+    $scope.messages = new Array();
+    // Flag pour l'empty screen
+    $scope.emptyArray = true;
+    // L'objet qui indique quel utilisateur est en train de taper.
+    $scope.messageInput = null;
+    // Le contenu de l'input
+    $scope.currentMessage = '';
 
-      // La liste des messages
-      $scope.messages = new Array();
-      // L'objet qui indique quel utilisateur est en train de taper. 
-      $scope.messageInput = null;
-      // Le contenu de l'input 
-      $scope.currentMessage = ''; 
-      
-      /**
-       * Gestion du message en cours
-       */
-      $scope.updateInput = function(){
-        var size = $scope.currentMessage.length;
-        if (!$scope.messageInput && size > 0){
-          $scope.messageInput ={
-            author: USER.name,
-            img : USER.imgLong
-          } 
-        }else if(size === 0){
-          $scope.messageInput = null;
+    /**
+     * Ajout d'un nouveau message
+     */
+    $scope.sendMessage = function() {
+      if ($scope.currentMessage.length > 0) {
+        addUserMessage($scope.currentMessage + '', true);
+
+        // On néttoie et on simule la conversation
+        $scope.currentMessage = '';
+        $scope.messageInput = null;
+
+        // Simulation d'un délais de réponse aléatoire, plus naturel
+        function generateDelay() {
+          const delay = Math.floor(Math.random() * 1000) + 500;
+          return delay;
         }
-      }
 
-      /**
-       * Ajout d'un nouveau message'
-       */
-      $scope.sendMessage = function(){
-        if ($scope.currentMessage.length > 0){
-          addUserMessage($scope.currentMessage+'', true);
-          
-          // On néttoie et on simule la conversation
-          $scope.currentMessage = '';
-          $scope.messageInput = null;
+        // Simulation de l'indicateur de frappe "opérateur"
+        // Pas nécéssaire dans le cas de l'utilisateur...qui sait ce qui se passe
+        $scope.messageInput = {
+          author: OPERATOR.name,
+          img: OPERATOR.imgLong
+        };
 
-          $timeout(function fakeAnswer(){
-            $scope.messageInput = {
-              author: OPERATOR.name,
-              img : OPERATOR.imgLong
-            };
-            $http({
-              method: 'GET',
-              url: 'https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1'
-            })
-            .then(function callBackFakeMessage(response){
-
+        $timeout(function fakeAnswer() {
+          const messageLength = Math.floor(Math.random() * 2) + 1;
+          $http({
+            method: 'GET',
+            url:
+              'https://baconipsum.com/api/?type=all-meat&sentences=' +
+              messageLength +
+              '&start-with-lorem=1'
+          }).then(
+            function callBackFakeMessage(response) {
               $scope.messageInput = null;
               addUserMessage(response.data[0], false);
             },
-            function callBackError(){
+            function callBackError() {
               $scope.messageInput = null;
-            });
-          }, 500);
-        }
+            }
+          );
+        }, generateDelay());
       }
+    };
 
+    /**
+     * Simule un premier message opérateur pour lancer la conversation
+     */
+    $timeout(function fakeAnswer() {
+      $scope.messageInput = {
+        author: OPERATOR.name,
+        img: OPERATOR.imgLong
+      };
 
-      /**
-       * Fonction utilitaire pour l'ajout d'un message
-       */
-      function addUserMessage(message, me){
-        $scope.messages.push({
-          author: me ? USER.name : OPERATOR.name,
-          time: new Date(),
-          message: message,
-          img : './assets/_MG_'+ (me ? USER.img : OPERATOR.img),
-          me: me 
-        })
-      }
+      $timeout(function startConversation() {
+        $scope.messageInput = null;
+        addUserMessage('Hello! Can I help you with anything?', false);
+      }, 300);
+    }, 1500);
 
-}]);
+    /**
+     * Fonction utilitaire pour l'ajout d'un message
+     */
+    function addUserMessage(message, me) {
+      $scope.messages.push({
+        author: me ? USER.name : OPERATOR.name,
+        time: new Date(),
+        message: message,
+        img: './assets/_MG_' + (me ? USER.img : OPERATOR.img),
+        me: me
+      });
+      $scope.emptyArray = false;
+      setTimeout(() => {
+        var logContainer = document.getElementById('log');
+        logContainer.scrollTop = logContainer.scrollHeight;
+      }, 50); // Delay is needed to wait for DOM update, then it scrolls to last message
+    }
+  }
+]);

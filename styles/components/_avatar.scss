@@ -1,0 +1,14 @@
+.avatar {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
+  background-size: cover;
+  background-position: center;
+  overflow: visible;
+
+  &.small {
+    width: 4rem;
+    height: 4rem;
+  }
+}

@@ -1,0 +1,43 @@
+.chatbox-header {
+  padding: 0 $desktopPaddingBase;
+  border-bottom: 0.1rem solid $dividers;
+  height: 6.5rem;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  flex-shrink: 0;
+
+  .operator {
+    margin-right: 1rem;
+    position: relative;
+
+    &:before {
+      content: '';
+      display: block;
+      width: 1rem;
+      height: 1rem;
+      bottom: 0.5rem;
+      right: -0.1rem;
+      background: $secondary;
+      border-radius: 100%;
+      position: absolute;
+    }
+  }
+
+  .name,
+  .context {
+    width: 100%;
+  }
+
+  .name {
+    @include source(1.8rem, 700, $copy);
+    line-height: 1.9rem;
+  }
+
+  .context {
+    @include source(1.5rem, 400, $placeholder);
+    line-height: 1.9rem;
+  }
+}

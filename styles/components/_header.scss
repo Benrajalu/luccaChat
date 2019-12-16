@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  flex-shrink: 0;
+
+  .logo {
+    width: 7.5rem;
+    height: 7.5rem;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    background: $white;
+    border-radius: 100%;
+  }
+}

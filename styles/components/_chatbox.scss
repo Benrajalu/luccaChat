@@ -1,0 +1,49 @@
+.chatbox {
+  @include box;
+  width: 100%;
+  height: calc(100vh - 16.5rem);
+  position: relative;
+  max-width: 85rem;
+  max-height: 70rem;
+  margin-bottom: 5rem; // Vertical margin to artifically recenter the chatbox, balancing with the logo
+  display: flex;
+  flex-flow: column;
+  justify-content: stretch;
+  align-items: stretch;
+
+  .messages-wrapper {
+    flex-grow: 2;
+    overflow: auto;
+    padding: $desktopPaddingBase ($desktopPaddingBase * 2);
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    position: relative;
+
+    &:before {
+      content: '';
+      margin-top: auto;
+    }
+  }
+
+  .status {
+    display: flex;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    padding: 0 $desktopPaddingBase;
+    position: relative;
+
+    &:after {
+      content: '';
+      width: 100%;
+      display: block;
+      height: 2rem;
+      background: linear-gradient(to bottom, transparent, $white);
+      z-index: 1;
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+    }
+  }
+}

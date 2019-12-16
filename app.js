@@ -1,22 +1,22 @@
-var chatApp = angular.module('chatApp', ['ngSanitize']);
+var chatApp = angular.module("chatApp", ["ngSanitize"]);
 
 // Define the `ChatController` controller on the `phonecatApp` module
-chatApp.controller('ChatController', [
-  '$scope',
-  '$http',
-  '$timeout',
+chatApp.controller("ChatController", [
+  "$scope",
+  "$http",
+  "$timeout",
   function($scope, $http, $timeout) {
     // Déclaration des 2 users
     var USER = {
-      imgLong: './assets/_MG_9428.png',
-      img: '9428.png',
-      name: 'Jane Doe'
+      imgLong: "./assets/_MG_9428.png",
+      img: "9428.png",
+      name: "Jane Doe"
     };
 
     var OPERATOR = {
-      imgLong: './assets/_MG_9359.png',
-      img: '9359.png',
-      name: 'Tomothy Webb'
+      imgLong: "./assets/_MG_9359.png",
+      img: "9359.png",
+      name: "Tomothy Webb"
     };
 
     // La liste des messages
@@ -26,25 +26,23 @@ chatApp.controller('ChatController', [
     // L'objet qui indique quel utilisateur est en train de taper.
     $scope.messageInput = null;
     // Le contenu de l'input
-    $scope.currentMessage = '';
-    // Disable l'input principal si vide
-    $scope.isInputDisabled = $scope.currentMessage.length === 0;
+    $scope.currentMessage = "";
 
     /**
      * Ajout d'un nouveau message
      */
     $scope.sendMessage = function() {
       if ($scope.currentMessage.length > 0) {
-        addUserMessage($scope.currentMessage + '', true);
+        addUserMessage($scope.currentMessage + "", true);
 
         // On néttoie et on simule la conversation
-        $scope.currentMessage = '';
+        $scope.currentMessage = "";
         $scope.messageInput = null;
 
         // Simulation d'un délais de réponse aléatoire, plus naturel
         function generateDelay() {
           const delay = Math.floor(Math.random() * 1000) + 500;
-          console.log(delay + 'ms');
+          console.log(delay + "ms");
           return delay;
         }
 
@@ -57,9 +55,9 @@ chatApp.controller('ChatController', [
 
         $timeout(function fakeAnswer() {
           $http({
-            method: 'GET',
+            method: "GET",
             url:
-              'https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1'
+              "https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1"
           }).then(
             function callBackFakeMessage(response) {
               $scope.messageInput = null;
@@ -81,7 +79,7 @@ chatApp.controller('ChatController', [
         author: me ? USER.name : OPERATOR.name,
         time: new Date(),
         message: message,
-        img: './assets/_MG_' + (me ? USER.img : OPERATOR.img),
+        img: "./assets/_MG_" + (me ? USER.img : OPERATOR.img),
         me: me
       });
       $scope.emptyArray = false;

@@ -57,14 +57,19 @@
                   {{ message.message }}
                 </p>
                 <p style="color:#333">
-                  {{ message.time | date: 'yyyy-MM-dd HH:mm:ss Z' }}
+                  {{ message.time | date: "yyyy-MM-dd HH:mm:ss Z" }}
                 </p>
               </article>
             </li>
           </ul>
 
           <div class="status">
-            <p ng-if="messageInput" style="background:white; width:400px">
+            <p ng-if="messageInput">
+              <span class="typingIndicator">
+                <i></i>
+                <i></i>
+                <i></i>
+              </span>
               {{ messageInput.author }} écrit ...
             </p>
           </div>
@@ -74,13 +79,23 @@
             <input
               placeholder="Envoyer un message"
               ng-model="currentMessage"
-              ng-change="updateInput()"
               class="input"
               id="message"
               required
             />
-            <button class="submit" ng-disabled="composeBox.$invalid">
-              send
+            <button
+              class="submit"
+              ng-disabled="composeBox.$invalid"
+              title="Send message"
+            >
+              <svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M3.375 15.075L23.625 3.375L8.49375 17.8312L3.375 15.075Z"
+                />
+                <path
+                  d="M17.3813 22.5562L14.0063 20.925L12.2625 23.7375L11.6438 19.575L23.625 3.375L23.5125 3.7125L17.3813 22.5562Z"
+                />
+              </svg>
             </button>
           </form>
         </div>

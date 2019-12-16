@@ -36,16 +36,39 @@
     position: absolute;
     box-shadow: 0 0 0 0.2rem rgba($secondary, 0);
     cursor: pointer;
+    padding: 0;
     transition: box-shadow 100ms ease-in, background 100ms ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > svg {
+      display: block;
+      margin: 0;
+      width: 2rem;
+      height: 2rem;
+      fill: $white;
+      position: relative;
+      left: -0.1rem; // Center correction for balance
+      transition: fill 100ms ease-in;
+    }
 
     &:hover:not(:disabled) {
       background: $white;
+      
+      > svg {
+        fill: $primary;
+      } 
     }
 
     &:focus {
       outline: 0;
       box-shadow: 0 0 0 0.2rem rgba($secondary, 1);
       background: $white;
+
+      > svg {
+        fill: $primary;
+      } 
     }
 
     &:disabled {

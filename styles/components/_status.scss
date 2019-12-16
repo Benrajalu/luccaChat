@@ -1,0 +1,50 @@
+.status {
+  @include source(1.3rem, 400, $placeholder);
+  
+  p {
+    position: relative;
+  }
+
+  .typingIndicator {
+    display: inline-flex;
+    flex-flow: row nowrap;
+    margin-right: 1rem;
+
+    > i {
+      width: 0.7rem;
+      height: 0.7rem;
+      margin-right: 0.3rem;
+      background: $secondary;
+      border-radius: 100%;
+      animation-name: jumpingDot;
+      animation-duration: 150ms;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-delay: 100ms;
+
+      &:last-child,
+      &:first-child {
+        background: $primary;
+      }
+
+      &:first-child { 
+        animation-delay: 0ms;
+      } 
+
+      &:last-child { 
+        animation-delay: 200ms;
+        margin-right: 0;
+      } 
+    }
+  }
+}
+
+@keyframes jumpingDot {
+  from {
+    transform: translateY(0)
+  }
+
+  to {
+    transform: translateY(-60%)
+  }
+}

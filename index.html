@@ -29,7 +29,7 @@
               <img
                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 class="avatar small"
-                alt="Avatar de Thomoty"
+                alt="Tomothy's avatar"
                 style="background-image: url('./assets/_MG_9359.png')"
               />
             </figure>
@@ -42,7 +42,9 @@
           </aside>
 
           <ul class="messages-wrapper" id="log">
-            <li ng-show="emptyArray" class="emptyScreen">Time to start a conversation!</li>
+            <li ng-show="emptyArray" class="emptyScreen">
+              Time to start a conversation!
+            </li>
             <li
               ng-repeat="message in messages"
               class="message"
@@ -51,10 +53,10 @@
               <img
                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 class="avatar"
-                alt="Avatar de {{ message.author }}"
+                alt="{{ message.author }}'s avatar"
                 style="background-image: url('{{ message.img }}')"
               />
-              <article class="body">
+              <article class="message-body">
                 <p class="content">
                   {{ message.message }}
                 </p>
@@ -79,13 +81,13 @@
             <input
               placeholder="Envoyer un message"
               ng-model="currentMessage"
-              class="input"
+              class="composeBox-input"
               id="message"
               autocomplete="off"
               required
             />
             <button
-              class="submit"
+              class="composeBox-button"
               ng-disabled="composeBox.$invalid"
               title="Send message"
             >

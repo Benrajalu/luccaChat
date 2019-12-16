@@ -2,7 +2,7 @@
   padding: 1rem $desktopPaddingBase $desktopPaddingBase;
   position: relative;
 
-  .input {
+  .composeBox-input {
     display: block;
     width: 100%;
     height: 6rem;
@@ -24,7 +24,7 @@
     }
   }
 
-  .submit {
+  .composeBox-button {
     right: $desktopPaddingBase * 2;
     top: 50%;
     width: 4rem;
@@ -55,10 +55,10 @@
 
     &:hover:not(:disabled) {
       background: $white;
-      
+
       > svg {
         fill: $primary;
-      } 
+      }
     }
 
     &:focus {
@@ -68,7 +68,7 @@
 
       > svg {
         fill: $primary;
-      } 
+      }
     }
 
     &:disabled {

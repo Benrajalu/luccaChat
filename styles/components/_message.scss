@@ -17,25 +17,25 @@
     flex-shrink: 0;
   }
 
-  .body {
+  .message-body {
     order: 2;
     background: $secondary;
     border-radius: 1rem 1rem 1rem 0.3rem;
     padding: 1.5rem $desktopPaddingBase;
     max-width: 35rem;
-  }
 
-  .content {
-    @include source(1.5rem, 400, $white);
-    margin-bottom: 1.5rem;
-    line-height: 1.9rem;
-  }
+    .content {
+      @include source(1.5rem, 400, $white);
+      margin-bottom: 1.5rem;
+      line-height: 1.9rem;
+    }
 
-  .timestamp {
-    @include source(1.3rem, 400, $white);
+    .timestamp {
+      @include source(1.3rem, 400, $white);
 
-    &::first-letter {
-      text-transform: uppercase;
+      &::first-letter {
+        text-transform: uppercase;
+      }
     }
   }
 
@@ -48,7 +48,7 @@
       margin-left: 1.5rem;
     }
 
-    .body {
+    .message-body {
       order: 1;
       background: $primary;
       border-radius: 1rem 1rem 0.3rem 1rem;

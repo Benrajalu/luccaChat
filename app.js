@@ -74,6 +74,21 @@ chatApp.controller('ChatController', [
     };
 
     /**
+     * Simule un premier message opérateur pour lancer la conversation
+     */
+    $timeout(function fakeAnswer() {
+      $scope.messageInput = {
+        author: OPERATOR.name,
+        img: OPERATOR.imgLong
+      };
+
+      $timeout(function startConversation() {
+        $scope.messageInput = null;
+        addUserMessage('Hello! Can I help you with anything?', false);
+      }, 300);
+    }, 1500);
+
+    /**
      * Fonction utilitaire pour l'ajout d'un message
      */
     function addUserMessage(message, me) {

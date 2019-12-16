@@ -1,0 +1,7 @@
+.emptyScreen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  @include source(1.9rem, 600, $dividers);
+}

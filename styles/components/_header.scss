@@ -16,4 +16,23 @@
     background: $white;
     border-radius: 100%;
   }
+
+  @media screen and (max-width: 600px) {
+    background: $white;
+    height: 6rem;
+    padding: 0;
+    border-bottom: 0.1rem solid $dividers;
+
+    .logo {
+      width: 2.8rem;
+      padding: 0;
+      height: auto;
+      background: transparent;
+
+      img {
+        width: 100%;
+        display: block
+      }
+    }
+  }
 }

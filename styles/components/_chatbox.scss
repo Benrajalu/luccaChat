@@ -1,6 +1,6 @@
 .chatbox {
   @include box;
-  width: 100%;
+  width: 95%;
   height: calc(100vh - 16.5rem);
   position: relative;
   max-width: 85rem;
@@ -38,12 +38,34 @@
       content: '';
       width: 100%;
       display: block;
-      height: 2rem;
+      height: $desktopPaddingBase;
       background: linear-gradient(to bottom, transparent, $white);
       z-index: 1;
       position: absolute;
       bottom: 100%;
       left: 0;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    height: calc(100vh - 6rem);
+    max-height: 100%;
+    margin-bottom: 0;
+    background: transparent;
+    box-shadow: 0 0 0 transparent;
+
+    .messages-wrapper {
+      padding: $mobilePaddingBase ($mobilePaddingBase *2);
+    }
+
+    .status { 
+      padding: 0 $mobilePaddingBase;
+
+      &:after {
+        height: $mobilePaddingBase;
+        background: linear-gradient(to bottom, transparent, $background);
+      }
     }
   }
 }

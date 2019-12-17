@@ -10,7 +10,7 @@
     background: $background;
     border: 0.1rem solid $dividers;
     border-radius: 0.6rem;
-    padding: 0 $desktopPaddingBase;
+    padding: 0 ($desktopPaddingBase * 2 + 4rem) 0 $desktopPaddingBase;
     @include source(1.5rem, 400, $copy);
     transition: border 100ms ease-in;
 
@@ -74,6 +74,17 @@
     &:disabled {
       cursor: not-allowed;
       opacity: 0.5;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .composeBox-input {
+      background: $white;
+      padding: 0 ($mobilePaddingBase * 2 + 4rem) 0 $mobilePaddingBase;
+      
+      .composeBox-button {
+        right: $mobilePaddingBase * 2;
+      }
     }
   }
 }

@@ -39,7 +39,7 @@
       width: 100%;
       display: block;
       height: $desktopPaddingBase;
-      background: linear-gradient(to bottom, transparent, $white);
+      background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), $white);
       z-index: 1;
       position: absolute;
       bottom: 100%;
@@ -64,7 +64,7 @@
 
       &:after {
         height: $mobilePaddingBase;
-        background: linear-gradient(to bottom, transparent, $background);
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), $background);
       }
     }
   }

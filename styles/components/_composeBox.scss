@@ -13,6 +13,7 @@
     padding: 0 ($desktopPaddingBase * 2 + 4rem) 0 $desktopPaddingBase;
     @include source(1.5rem, 400, $copy);
     transition: border 100ms ease-in;
+    -webkit-appearance: none;
 
     &::placeholder {
       color: $placeholder;

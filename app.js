@@ -41,7 +41,7 @@ chatApp.controller('ChatController', [
 
         // Simulation d'un délais de réponse aléatoire, plus naturel
         function generateDelay() {
-          const delay = Math.floor(Math.random() * 1000) + 500;
+          var delay = Math.floor(Math.random() * 1000) + 500;
           return delay;
         }
 
@@ -53,7 +53,7 @@ chatApp.controller('ChatController', [
         };
 
         $timeout(function fakeAnswer() {
-          const messageLength = Math.floor(Math.random() * 2) + 1;
+          var messageLength = Math.floor(Math.random() * 2) + 1;
           $http({
             method: 'GET',
             url:
@@ -100,7 +100,7 @@ chatApp.controller('ChatController', [
         me: me
       });
       $scope.emptyArray = false;
-      setTimeout(() => {
+      $timeout(function autoScroll() {
         var logContainer = document.getElementById('log');
         logContainer.scrollTop = logContainer.scrollHeight;
       }, 50); // Delay is needed to wait for DOM update, then it scrolls to last message

@@ -1,11 +1,13 @@
 .message {
   display: flex;
   flex-flow: row;
+  width: 100%;
   justify-content: flex-start;
   align-items: flex-end;
   margin-bottom: 3rem;
   animation: appear 200ms ease-out;
   animation-fill-mode: forwards;
+  flex-shrink: 0;
 
   &:last-child {
     margin-bottom: 0;
@@ -44,7 +46,7 @@
 
     .avatar {
       order: 2;
-      padding-right: 0;
+      margin-right: 0;
       margin-left: 1.5rem;
     }
 

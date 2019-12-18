@@ -40,4 +40,20 @@
     @include source(1.5rem, 400, $placeholder);
     line-height: 1.9rem;
   }
+
+  @media screen and (max-width: 600px) {
+    padding: 0 $mobilePaddingBase;
+  }
+
+  @media screen and (max-width: 400px) {
+    .name {
+      font-size: 1.5rem;
+      line-height: 1.7rem;
+    }
+
+    .context {
+      font-size: 1.3rem;
+      line-height: 1.3rem;
+    }
+  }
 }

@@ -42,7 +42,7 @@
             </div>
           </aside>
 
-          <ul class="messages-wrapper" id="log">
+          <ul class="messages-wrapper" id="log" aria-live="polite">
             <li ng-show="emptyArray" class="emptyScreen">
               Time to start a conversation!
             </li>
@@ -58,6 +58,7 @@
                 style="background-image: url('{{ message.img }}')"
               />
               <article class="message-body">
+                <p class="sr-only">{{ message.author }} says:</p>
                 <p class="content">
                   {{ message.message }}
                 </p>
@@ -66,7 +67,7 @@
             </li>
           </ul>
 
-          <div class="status">
+          <div class="status" aria-live="polite">
             <p ng-if="messageInput">
               <span class="typingIndicator">
                 <i></i>

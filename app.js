@@ -8,13 +8,13 @@ chatApp.controller('ChatController', [
   function($scope, $http, $timeout) {
     // Déclaration des 2 users
     var USER = {
-      imgLong: './assets/_MG_9428.png',
+      imgLong: './assets/9428.png',
       img: '9428.png',
       name: 'Jane Doe'
     };
 
     var OPERATOR = {
-      imgLong: './assets/_MG_9359.png',
+      imgLong: './assets/9359.png',
       img: '9359.png',
       name: 'Tomothy Webb'
     };

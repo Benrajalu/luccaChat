@@ -8,13 +8,11 @@ chatApp.controller('ChatController', [
   function($scope, $http, $timeout) {
     // Déclaration des 2 users
     var USER = {
-      imgLong: './assets/9428.png',
       img: '9428.png',
       name: 'Jane Doe'
     };
 
     var OPERATOR = {
-      imgLong: './assets/9359.png',
       img: '9359.png',
       name: 'Tomothy Webb'
     };
@@ -48,8 +46,7 @@ chatApp.controller('ChatController', [
         // Simulation de l'indicateur de frappe "opérateur"
         // Pas nécéssaire dans le cas de l'utilisateur...qui sait ce qui se passe
         $scope.messageInput = {
-          author: OPERATOR.name,
-          img: OPERATOR.imgLong
+          author: OPERATOR.name
         };
 
         $timeout(function fakeAnswer() {
@@ -78,8 +75,7 @@ chatApp.controller('ChatController', [
      */
     $timeout(function fakeAnswer() {
       $scope.messageInput = {
-        author: OPERATOR.name,
-        img: OPERATOR.imgLong
+        author: OPERATOR.name
       };
 
       $timeout(function startConversation() {
@@ -96,7 +92,7 @@ chatApp.controller('ChatController', [
         author: me ? USER.name : OPERATOR.name,
         time: new Date(),
         message: message,
-        img: './assets/_MG_' + (me ? USER.img : OPERATOR.img),
+        img: './assets/' + (me ? USER.img : OPERATOR.img),
         me: me
       });
       $scope.emptyArray = false;
